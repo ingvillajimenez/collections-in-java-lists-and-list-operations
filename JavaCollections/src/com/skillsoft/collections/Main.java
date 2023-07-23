@@ -1,17 +1,17 @@
 package com.skillsoft.collections;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.Collection
 
 public class Main {
 
     public static void main(String[] args) {
 
-//        ArrayList<String> cityList = new ArrayList<>();
-        List<String> cityList = new ArrayList<>();
-//        Collection<String> cityList = new ArrayList<>(); // size, add, remove, contains, containsAll,
-                                                        // removeAll, addAll are part of the Collection interface
+//        List<String> cityList = new ArrayList<>(); // All of these methods which have to do with index
+                                                    // positions are only available on the List interface
+        Collection<String> cityList = new ArrayList<>(); // add(int, string), get(int), indexOf(String)
+                                                        // are not available on the Collection interface
 
         System.out.println("************Adding elements");
 
@@ -21,75 +21,79 @@ public class Main {
 
         System.out.println("cityList contents: " + cityList);
         System.out.println("cityList size: " + cityList.size());
-        System.out.println("cityList isEmpty(): " + cityList.isEmpty());
 
         System.out.println();
 
-        System.out.println("************Removing elements");
+        System.out.println("**************Adding elements at specified index");
 
-        cityList.remove("Seattle");
-        cityList.remove("Palo Alto");
+        cityList.add(0, "Seattle");
 
         System.out.println("cityList contents: " + cityList);
         System.out.println("cityList size: " + cityList.size());
-        System.out.println("cityList isEmpty(): " + cityList.isEmpty());
 
-        System.out.println();
+        cityList.add(2, "Palo Alto");
 
-        System.out.println("**************Checking for elements");
-
-        System.out.println("cityList contains New York: " + cityList.contains("New York"));
-        System.out.println("cityList contains Paris: " + cityList.contains("Paris"));
-        System.out.println("cityList contains Mumbai: " + cityList.contains("Mumbai"));
-
+        System.out.println("cityList contents: " + cityList);
         System.out.println("cityList size: " + cityList.size());
 
         System.out.println();
 
-        System.out.println("*************Adding multiple elements");
+        System.out.println("***********Accessing elements at the specified index");
 
-        List<String> anotherCityList = new ArrayList<>();
-        anotherCityList.add("Paris");
-        anotherCityList.add("London");
+        System.out.println("Element at index 0: " + cityList.get(0));
+        System.out.println("Element at index 2: " + cityList.get(2));
+        System.out.println("Element at index 4: " + cityList.get(4));
+
+        System.out.println();
+
+//        System.out.println("Element at index 7: " + cityList.get(7)); // java.lang.IndexOutOfBoundsException
+
+        System.out.println("**********Removing elements from specified index");
 
         System.out.println("cityList original contents: " + cityList);
-        System.out.println("Adding elements: " + anotherCityList);
 
-        cityList.addAll(anotherCityList);
+        cityList.remove(0);
+
+        System.out.println("cityList contents: " + cityList);
+        System.out.println("cityList size: " + cityList.size());
+
+        cityList.remove(3);
 
         System.out.println("cityList contents: " + cityList);
         System.out.println("cityList size: " + cityList.size());
 
         System.out.println();
 
-        System.out.println("*************Checking for multiple elements");
-
-        System.out.println("cityList contains Paris, London: " + cityList.containsAll(anotherCityList));
-
-        anotherCityList.add("Tokyo");
-        System.out.println("cityList contains Paris, London, Tokyo: " + cityList.containsAll(anotherCityList));
-
-        System.out.println("************Removing multiple elements");
-
+        System.out.println("***********Lists can contain duplicates");
         System.out.println("cityList original contents: " + cityList);
-        System.out.println("Removing elements: " + anotherCityList);
 
-        cityList.removeAll(anotherCityList);
+        cityList.add("Palo Alto");
+        cityList.add("Bengaluru");
+        cityList.add("Mumbai");
+        cityList.add("Seattle");
 
         System.out.println("cityList contents: " + cityList);
 
-//        ArrayList<int> intList = new ArrayList<int>(); // Type argument cannot be of primitive type
-//        ArrayList<Integer> intList = new ArrayList<Integer>();
-//
-//        intList.add(100);
-//        intList.add(200);
-//        intList.add(300);
-//        intList.add(400);
-//
-//        System.out.println("Integer list: " + intList);
-//
-//        intList.add(null);
-//
-//        System.out.println("Integer list (after adding null): " + intList);
+        System.out.println();
+
+        System.out.println("**********Find the index position of an element");
+        System.out.println("cityList original contents: " + cityList);
+
+        // NOTE: That this finds the first position of the element from the beginning of the list
+        System.out.println("Mumbai is at index: " + cityList.indexOf("Mumbai"));
+        System.out.println("Palo Alto is at index: " + cityList.indexOf("Palo Alto"));
+        System.out.println("Paris is at index: " + cityList.indexOf("Paris"));
+
+        System.out.println();
+
+        System.out.println("**********Find the last index position of an element");
+        System.out.println("cityList original contents: " + cityList);
+
+        // NOTE: That this finds the first position of the element from the end of the list
+        System.out.println("Mumbai is at index: " + cityList.lastIndexOf("Mumbai"));
+        System.out.println("Bengaluru is at index: " + cityList.lastIndexOf("Bengaluru"));
+        System.out.println("Palo Alto is at index: " + cityList.lastIndexOf("Palo Alto"));
+
+        System.out.println();
     }
 }

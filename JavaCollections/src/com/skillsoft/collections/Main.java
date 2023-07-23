@@ -15,43 +15,43 @@ public class Main {
         carList.add(new Car("BMW", "5 Series", 65000.0));
 
         System.out.println("Car list: " + carList);
+        System.out.println();
 
-        carList.add("Mercedes"); // java: incompatible types: java.lang.String cannot be converted to com.skillsoft.collections.Car
-        carList.add(5); // java: incompatible types: int cannot be converted to com.skillsoft.collections.Car
-        carList.add(true); // java: incompatible types: boolean cannot be converted to com.skillsoft.collections.Car
-        carList.add(10.25f); // java: incompatible types: float cannot be converted to com.skillsoft.collections.Car
+        ArrayList nonGenericCarList = new ArrayList<>();
 
-//        ArrayList<String> currencyList = new ArrayList<>();
-//
-//        currencyList.add("EUR");
-//        currencyList.add("USD");
-//        currencyList.add("INR");
-//
-//        System.out.println("Currency list: " + currencyList);
-//
-//        currencyList.add(5); // java: incompatible types: int cannot be converted to java.lang.String
-//        currencyList.add(true); // java: incompatible types: boolean cannot be converted to java.lang.String
-//        currencyList.add(10.25f); // java: incompatible types: float cannot be converted to java.lang.String
+        nonGenericCarList.add(new Car("Honda", "Civic", 21000.0));
+        nonGenericCarList.add(new Car("Toyota", "Camry", 29000.0));
+        nonGenericCarList.add(new Car("BMW", "5 Series", 65000.0));
 
-//        ArrayList<String> stringArrayList = new ArrayList<String>();
-//        ArrayList<String> stringArrayList = new ArrayList<>();
-//
-//        System.out.println("ArrayList class: " + stringArrayList.getClass());
-//
-//        System.out.println();
-//
-//        System.out.println("ArrayList instanceof List: "
-//                + (stringArrayList instanceof List<?>));
-//        System.out.println("ArrayList instanceof Collection: "
-//                + (stringArrayList instanceof Collection<?>));
-//        System.out.println("ArrayList instanceof Iterable: "
-//                + (stringArrayList instanceof Iterable<?>));
+        System.out.println("Non-Generic Car list: " + nonGenericCarList);
+        System.out.println();
 
-//        System.out.println("ArrayList instanceof List: "
-//                + (stringArrayList instanceof List));
-//        System.out.println("ArrayList instanceof Collection: "
-//                + (stringArrayList instanceof Collection));
-//        System.out.println("ArrayList instanceof Iterable: "
-//                + (stringArrayList instanceof Iterable));
+        System.out.println("**** No casting required to access list elements");
+
+        for (Car car: carList) {
+            System.out.format("%s, %s, %.1f", car.getMake(), car.getModel(), car.getPrice());
+            System.out.println();
+        }
+
+        System.out.println();
+
+        System.out.println("**** List elements have to be cast to the right type");
+
+        for (Object object: nonGenericCarList) {
+            Car car = (Car) object;
+
+            System.out.format("%s, %s, %.1f", car.getMake(), car.getModel(), car.getPrice());
+            System.out.println();
+        }
+
+        System.out.println();
+
+        Car car = carList.get(2);
+        System.out.println(car);
+
+        System.out.println();
+
+        car = (Car) nonGenericCarList.get(1);
+        System.out.println(car);
     }
 }
